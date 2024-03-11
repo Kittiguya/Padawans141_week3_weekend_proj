@@ -5,10 +5,9 @@
 #  Will require OOP (Object Oriented Programming, AKA OOP OOP OOP), lots of .self everywhere (lucky you Robin, literally the thing i feel most confident doing so far.)
 #   I'mma be trying to make this mostly user inputted. It would be the cherry on top here. 
 #
-#                                              Use the values from below to check it out. 
+#                                              Use the values from below to check it out. Or make up your own! :)
 #                                                 INFO ON THE HOUSE FROM VIDEO BELOW
 #  $200,000 property
-#  Income: Rental income is "what"? Laundry, storage, misc. How much income they have incoming and available 
 #  Rental income: $2,000 per month; $0 for laundry, 0$ for storage, $0 for misc costs 
 #  Total monthly income = $2,000
 #  
@@ -19,18 +18,11 @@
 #  Cash Flow: Income($2,000) - expenses ($1,610) == $390 TOTAL MONTHLY CASH FLOW 
 #
 #  Cash on Cash Return on Investment (CoCROI): 
-#  Down Payment- $40,000, Closing Costs- $3,000 (for this case), Rehab (repair) budget- $7,000 (we painting the house boyo!!), 
+#  Down Payment- $40,000, Closing Costs- $3,000 (for this case), Rehab (repair) budget- $7,000 (we painting the house boyo!!), -- i didnt include this in user inputs. Rip
 #  MISC OTHERS AKA AREAS YOU MIGHT SPEND MONEY before purchasing or during purchasing
 #  Total investment: $50,000 added from the lines above, 
 #  Annual cash flow == $4,680 // total investment = 0.0936 but converted to percentages by moving decimal 2 places to the right is: 9.36%
-#  CoCROI == 9.36%  
-#  Sorry about the 42 lines of random bs. But this was fun. 
-
-
-# total cost; = expenses; = Down payment, Repair budget, Property manager, capital expidentures, Vacancy, 
-
-
-
+#  CoCROI == 9.36%
 
 class RentalProp:
     def __init__(self):
@@ -43,7 +35,7 @@ class RentalProp:
         self.rental_income['rent'] = float(input("Rental income: "))                           #user inputting rent payment
         self.rental_income['laundry'] = float(input("Laundry: "))                               # user inputting laundry costs per month
         self.rental_income['storage'] = float(input("Storage costs:"))                            #user inputting cost of storage each month
-        self.rental_income['miscellaneous'] = float(input("Miscellaneous costs"))                #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
+        self.rental_income['miscellaneous'] = float(input("Miscellaneous costs: "))                #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
 
         print("\nEnter Monthly expenses: ")
         self.expenses['tax'] = float(input("Taxes: "))                                                             #How much do you pay in taxes for the property per month
@@ -51,7 +43,7 @@ class RentalProp:
         self.expenses['utilities'] = float(input("Utilities cost: "))                                         #Electric, gas, water, internet, cable, car payment etc..
         self.expenses['hoa_fees'] = float(input("HOA Fees: "))                                               #Do you have any weird ass HOA fees you gotta pay? Those people are just weird
         self.expenses['lawn_care'] = float(input("Lawn Care: "))                                              #How much do you spend per month to maintain basic lawn care year round.
-        self.expenses['vacancy'] = float(input("Vacancy costs : "))                                         # Vacancy as a whole is weird to me. But i included it. 
+        self.expenses['vacancy'] = float(input("Vacancy costs: "))                                         # Vacancy as a whole is weird to me. But i included it. 
         self.expenses['repairs'] = float(input("Estimated Repairs: "))                                     #how much do you think youll repair on average each month? (set the money aside if no repairs are needed)
         self.expenses['capex'] = float(input("Capital Expenditures (CapEx): "))                            #Cash on Cash Return on Investment? This is a mouthful and hurts my brain trying to understand
         self.expenses['property_management'] = float(input("Property Management: "))                    #This is the cost of whether or not youre paying someone else to manage the property for you AKA a manager
@@ -60,24 +52,24 @@ class RentalProp:
         self.total_investment = float(input("\nEnter total investment: i.e (Down payment + Closing Costs, + early repairs, etc..)"))     #Total investment, Literally all the money you put up front total cost of it               
 
     def calc_cash_flow(self):                
-        total_income = sum(self.rental_income.values())
-        total_expenses = sum(self.expenses.values())
-        cash_flow = total_income - total_expenses
+        total_income = sum(self.rental_income.values())                    # sum() is adding up the values of the given dic/list from user input for self.rental_income
+        total_expenses = sum(self.expenses.values())                       # same thing as line above. just adds the values from user inputted self.expenses
+        cash_flow = total_income - total_expenses                          #this line literally deducts total expenses from total income to give you cash flow value.
         return cash_flow
     
-    def calc_cocroi(self):
+    def calc_cocroi(self):                                                  # this func, uses the cash_flow acquired from above to perform math to get the CoCROI
         cash_flow = self.calc_cash_flow()
-        ann_cash_flow = cash_flow * 12
+        ann_cash_flow = cash_flow * 12                                      
         cocroi = (ann_cash_flow / self.total_investment) * 100
         return cocroi
     
-    def display_results(self):
+    def display_results(self):                                                    #this function is showing you the monthly cash flow and your COCROI :) 
         cash_flow = self.calc_cash_flow()
         cocroi = self.calc_cocroi()
         print("\nTotal Monthly Cash Flow: ${:.2f}".format(cash_flow))
         print("Cash on Cash Return on Investment (CoCROI): {:.2f}%".format(cocroi))
 
-    def main():                                                     # this func is where the math will happen to calculate the ROI for the property using information given above.
+    def main():                                                    
         calculator = RentalProp()
         calculator.user_input()
         calculator.display_results()
