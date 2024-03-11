@@ -40,23 +40,23 @@ class RentalProp:
         self.total_investment = sum(self.initial_investment.values())      
 
         print("Enter rental income")                                       
-        self.rental_income['rent'] = float(input("Rental income: $").replace(',', '').replace('$', ''))                           #user inputting rent payment
-        self.rental_income['laundry'] = float(input("Laundry: $").replace(',', '').replace('$', ''))                               # user inputting laundry costs per month
-        self.rental_income['storage'] = float(input("Storage costs: $").replace(',', '').replace('$', ''))                           #user inputting cost of storage each month
-        self.rental_income['miscellaneous'] = float(input("Miscellaneous costs: $").replace(',', '').replace('$', ''))                #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
+        self.rental_income['rent'] = float(input("Whats is your rental income?: $").replace(',', '').replace('$', ''))                           #user inputting rent payment
+        self.rental_income['laundry'] = float(input("What are your laundry costs?: $").replace(',', '').replace('$', ''))                               # user inputting laundry costs per month
+        self.rental_income['storage'] = float(input("What is the cost of your Storage?: $").replace(',', '').replace('$', ''))                           #user inputting cost of storage each month
+        self.rental_income['miscellaneous'] = float(input("Do you have any miscellaneous costs? If so please add the total.: $").replace(',', '').replace('$', ''))     #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
         
 
         print("\nEnter Monthly expenses: ")
-        self.expenses['tax'] = float(input("Taxes: $").replace(',', '').replace('$', ''))                                                             #How much do you pay in taxes for the property per month
-        self.expenses['insurance'] = float(input("Insurance costs: $").replace(',', '').replace('$', ''))                                           #how much is the total cost for insurance on the property and your vehicles
-        self.expenses['utilities'] = float(input("Utilities cost: $").replace(',', '').replace('$', ''))                                         #Electric, gas, water, internet, cable, car payment etc..
-        self.expenses['hoa_fees'] = float(input("HOA Fees: $").replace(',', '').replace('$', ''))                                               #Do you have any weird ass HOA fees you gotta pay? Those people are just weird
-        self.expenses['lawn_care'] = float(input("Lawn Care: $").replace(',', '').replace('$', ''))                                             #How much do you spend per month to maintain basic lawn care year round.
-        self.expenses['vacancy'] = float(input("Vacancy costs: $").replace(',', '').replace('$', ''))                                         # Vacancy as a whole is weird to me. But i included it. 
-        self.expenses['repairs'] = float(input("Estimated Repairs: $").replace(',', '').replace('$', ''))                                     #how much do you think youll repair on average each month? (set the money aside if no repairs are needed)
-        self.expenses['capex'] = float(input("Capital Expenditures (CapEx): $").replace(',', '').replace('$', ''))                            #Cash on Cash Return on Investment? This is a mouthful and hurts my brain trying to understand
-        self.expenses['property_management'] = float(input("Property Management: $").replace(',', '').replace('$', ''))                    #This is the cost of whether or not youre paying someone else to manage the property for you AKA a manager
-        self.expenses['mortgage'] = float(input("Mortgage: $").replace(',', '').replace('$', ''))                                      #This is your monthly mortgage cost
+        self.expenses['tax'] = float(input("What is your monthly tax payment?: $").replace(',', '').replace('$', ''))                                                             #How much do you pay in taxes for the property per month
+        self.expenses['insurance'] = float(input("How much does your insurance cost?: $").replace(',', '').replace('$', ''))                                           #how much is the total cost for insurance on the property and your vehicles
+        self.expenses['utilities'] = float(input("What is the total cost of your Utilities?: $").replace(',', '').replace('$', ''))                                         #Electric, gas, water, internet, cable, car payment etc..
+        self.expenses['hoa_fees'] = float(input("Do you have any HOA fees?: $").replace(',', '').replace('$', ''))                                               #Do you have any weird ass HOA fees you gotta pay? Those people are just weird
+        self.expenses['lawn_care'] = float(input("What is your monthly Lawn maintence cost?: $").replace(',', '').replace('$', ''))                                             #How much do you spend per month to maintain basic lawn care year round.
+        self.expenses['vacancy'] = float(input("What is your expected vacancy cost?: $").replace(',', '').replace('$', ''))                                         # Vacancy as a whole is weird to me. But i included it. 
+        self.expenses['repairs'] = float(input("How much do you have for repairs each month?: $").replace(',', '').replace('$', ''))                                     #how much do you think youll repair on average each month? (set the money aside if no repairs are needed)
+        self.expenses['capex'] = float(input("What is the Capital Expenditures (CapEx) cost?: $").replace(',', '').replace('$', ''))                            #Cash on Cash Return on Investment? This is a mouthful and hurts my brain trying to understand
+        self.expenses['property_management'] = float(input("Do you have a property manager? If so, how much do they cost?: $").replace(',', '').replace('$', ''))                    #This is the cost of whether or not youre paying someone else to manage the property for you AKA a manager
+        self.expenses['mortgage'] = float(input("What is your monthly Mortgage payment?: $").replace(',', '').replace('$', ''))                                      #This is your monthly mortgage cost
                                                 
           
 
