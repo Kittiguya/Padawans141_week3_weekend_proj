@@ -32,11 +32,32 @@
 
 
 
-class RentalProp:                #class here is rental prop, standing for rental property calculator. 
-    def __init__(self, rental_income, expenses, total_investment):      # come fill these in with values related to .self  #youll use .self(value) = name of what it stands for
-        self.rental_income = rental_income
-        self.expenses = expenses
-        self.total_investment = total_investment                              
+class RentalProp:
+    def __init__(self):
+        self.rental_income = {}
+        self.expenses = {}
+        self.total_investment = 0
+
+    def user_input(self):                                            
+        print("Enter rental income")                                          
+        self.rental_income['rent'] = float(input("Rental income: "))                           #user inputting rent payment
+        self.rental_income['laundry'] = float(input("Laundry: "))                               # user inputting laundry costs per month
+        self.rental_income['storage'] = float(input("Storage costs:"))                            #user inputting cost of storage each month
+        self.rental_income['miscellaneous'] = float(input("Miscellaneous costs"))                #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
+
+        print("\nEnter Monthly expenses: ")
+        self.expenses['tax'] = float(input("Taxes: "))                                                             #How much do you pay in taxes for the property per month
+        self.expenses['insurance'] = float(input("Insurance costs: "))                                           #how much is the total cost for insurance on the property and your vehicles
+        self.expenses['utilities'] = float(input("Utilities cost: "))                                         #Electric, gas, water, internet, cable, car payment etc..
+        self.expenses['hoa_fees'] = float(input("HOA Fees: "))                                               #Do you have any weird ass HOA fees you gotta pay? Those people are just weird
+        self.expenses['lawn_care'] = float(input("Lawn Care: "))                                              #How much do you spend per month to maintain basic lawn care year round.
+        self.expenses['vacancy'] = float(input("Vacancy costs : "))                                         # Vacancy as a whole is weird to me. But i included it. 
+        self.expenses['repairs'] = float(input("Estimated Repairs: "))                                     #how much do you think youll repair on average each month? (set the money aside if no repairs are needed)
+        self.expenses['capex'] = float(input("Capital Expenditures (CapEx): "))                            #Cash on Cash Return on Investment? This is a mouthful and hurts my brain trying to understand
+        self.expenses['property_management'] = float(input("Property Management: "))                    #This is the cost of whether or not youre paying someone else to manage the property for you AKA a manager
+        self.expenses['mortgage'] = float(input(" Mortgage: "))                                          #This is your monthly mortgage cost
+
+        self.total_investment = float(input("\nEnter total investment: i.e (Down payment + Closing Costs, + early repairs, etc..)"))     #Total investment, Literally all the money you put up front total cost of it               
 
     def calc_cash_flow(self):                
         total_income = sum(self.rental_income.values())
@@ -50,41 +71,19 @@ class RentalProp:                #class here is rental prop, standing for rental
         cocroi = (ann_cash_flow / self.total_investment) * 100
         return cocroi
     
-def user_input():
-    rental_income = {}                                              #this is creating a list out of user inputted values below
-    print("Enter rental income")                                          
-    rental_income['rent'] = float(input("Rental income: "))                           #user inputting rent payment
-    rental_income['laundry'] = float(input("Laundry: "))                               # user inputting laundry costs per month
-    rental_income['storage'] = float(input("Storage costs:"))                            #user inputting cost of storage each month
-    rental_income['miscellaneous'] = float(input("Miscellaneous costs"))                #just random costs, could be alcohol, could be games, could be car parts, could be random trips out of town
+    def display_results(self):
+        cash_flow = self.calc_cash_flow()
+        cocroi = self.calc_cocroi()
+        print("\nTotal Monthly Cash Flow: ${:.2f}".format(cash_flow))
+        print("Cash on Cash Return on Investment (CoCROI): {:.2f}%".format(cocroi))
 
-    expenses = {}                                                    #this is creating a list for expenses based on user input
-    print("\nEnter Monthly expenses: ")
-    expenses['tax'] = float(input("Taxes: "))                                                             #How much do you pay in taxes for the property per month
-    expenses['insurance'] = float(input("Insurance costs: "))                                           #how much is the total cost for insurance on the property and your vehicles
-    expenses['utilities'] = float(input("Utilities cost: "))                                         #Electric, gas, water, internet, cable, car payment etc..
-    expenses['hoa_fees'] = float(input("HOA Fees: "))                                               #Do you have any weird ass HOA fees you gotta pay? Those people are just weird
-    expenses['lawn_care'] = float(input("Lawn Care: "))                                              #How much do you spend per month to maintain basic lawn care year round.
-    expenses['vacancy'] = float(input("Vacancy costs : "))                                         # Vacancy as a whole is weird to me. But i included it. 
-    expenses['repairs'] = float(input("Estimated Repairs: "))                                     #how much do you think youll repair on average each month? (set the money aside if no repairs are needed)
-    expenses['capex'] = float(input("Capital Expenditures (CapEx): "))                            #Cash on Cash Return on Investment? This is a mouthful and hurts my brain trying to understand
-    expenses['property_management'] = float(input("Property Management: "))                    #This is the cost of whether or not youre paying someone else to manage the property for you AKA a manager
-    expenses['mortgage'] = float(input(" Mortgage: "))                                          #This is your monthly mortgage cost
-
-    total_investment = float(input("\nEnter total investment: I.E(Down payment + Closing Costs, + early repairs, etc..)"))     #Total investment, Literally all the money you put up front total cost of it
-    return rental_income, expenses, total_investment
-
-def main():                                                     # this func is where the math will happen to calculate the ROI for the property using information given above.
-    rental_income, expenses, total_investment = user_input()                                       
-    propertyi = RentalProp(rental_income, expenses, total_investment)
-    cash_flow = propertyi.calc_cash_flow()
-    cocroi = propertyi.calc_cocroi()
-
-    print("\nTotal Monthly Cash Flow: ${:.2f}".format(cash_flow))
-    print("Cash on Cash Return on Investment (CoCROI): {:.2f}%".format(cocroi))
+    def main():                                                     # this func is where the math will happen to calculate the ROI for the property using information given above.
+        calculator = RentalProp()
+        calculator.user_input()
+        calculator.display_results()
 
 if __name__ == "__main__":
-    main()                                                          # note: if you input the values as $5,000 itll error out due to the comma and the $ somehow im not sure how to fix that. 
+    RentalProp.main()                                               # note: if you input the values as $5,000 itll error out due to the comma and the $ somehow im not sure how to fix that. 
                                                                     # Just use; example: 5000 or 500 or 50000 no commas, no periods, or dollar signs please!
                                                                     # Maybe ill fix monday before class. I found an answer but it gave me errors elsewhere, and i didnt wanna continue messing with it
                                                                     # The thing i struggle the most with: is coming up with what to name things. I hope that gets easier! 
